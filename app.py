@@ -20,7 +20,7 @@ app=Flask(__name__)
 
 def transcribe_audio(path:str)->str:
     with open(path,"rb") as f:
-        res=openai_client.audio.transcriptions.create(model="whisper-1",file=f)
+        res=openai_client.audio.transcriptions.create(model="whisper-1",file=f,language="en")
     return (res.text or "").strip()
 
 def call_orchestrator(text:str,user_id="web-user-1",channel="web")->dict:
